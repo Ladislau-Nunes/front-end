@@ -1,0 +1,53 @@
+<div class="container mt-4">
+    <div class="card p-2">
+      <h1 class="text-center">Student Registation</h1>
+      <form>
+        <div class="form-group">
+          <label>Nome do estudante</label>
+          <input type="text" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}" class="form-control" id="stname" placeholder="Enter Name">
+        </div>
+    
+        <div class="form-group">
+          <label>Curso</label>
+          <input type="text" [(ngModel)]="curso" [ngModelOptions]="{standalone: true}" class="form-control" id="course" placeholder="Enter Name">
+        </div>
+
+        <div class="form-group">
+            <label>Taxa</label>
+            <input type="text" [(ngModel)]="taxa" [ngModelOptions]="{standalone: true}" class="form-control" id="fee" placeholder="Enter Fee">
+          </div>
+
+
+    
+        <button type="submit" class="btn btn-primary mt-4" (click)="save()" >Save</button>
+       
+      </form>
+    </div>
+    
+        <div class="container mt-4" >
+            <h1>Student Table</h1>
+        <table class="table">
+            <thead>
+             <h1 *ngIf="!isResultLoaded">Loading.................</h1>      
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Student Name</th>
+                <th scope="col">Curso</th>  
+                <th scope="col">Taxa</th>  
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let StudentItem of StudentArray">
+                <td>{{StudentItem.id }}</td>
+                <td>{{StudentItem.nome }}</td>
+                <td>{{StudentItem.curso }}</td>
+                <td>{{StudentItem.taxa }}</td>
+                <td>
+                  <button type="button" class="btn btn-success" (click)="setUpdate(StudentItem)">Edit</button>
+                  <button type="button" class="btn btn-danger" (click)="setDelete(StudentItem)">Delete</button>            
+                </td>
+              </tr>          
+            </tbody>
+          </table>
+        </div>
+        
